@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infographic Practice Questions</title>
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-hover: #4338ca;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-color: #1e293b;
+            --border-color: #e2e8f0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 30px;
+        }
+        .student-info {
+            background: #f1f5f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .student-info input {
+            flex: 1;
+            min-width: 200px;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        .section-title {
+            background: #e0e7ff;
+            color: var(--primary);
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-weight: bold;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        .question-card {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background: #fff;
+        }
+        .question-text {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .options-group label {
+            display: block;
+            margin: 8px 0;
+            cursor: pointer;
+            padding: 6px 10px;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+        .options-group label:hover {
+            background: #f8fafc;
+        }
+        input[type="text"], select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .btn-submit {
+            display: block;
+            width: 100%;
+            background-color: var(--primary);
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: background 0.2s;
+        }
+        .btn-submit:hover {
+            background-color: var(--primary-hover);
+        }
+        #result-container {
+            display: none;
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .success-box {
+            background-color: #dcfce7;
+            color: #166534;
+            border: 1px solid #bbf7d0;
+        }
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Infographic Practice Questions</h1>
+    <p class="subtitle">Silakan isi identitas dan jawab seluruh pertanyaan di bawah ini dengan teliti.</p>
+
+    <div class="student-info">
+        <input type="text" id="studentName" placeholder="Nama Lengkap" required>
+        <input type="text" id="studentId" placeholder="Nomor Induk / Kelas" required>
+    </div>
+
+    <form id="quizForm">
+        
+        <!-- BAGIAN A: Multiple Choice (1-12) -->
+        <div class="section-title">A. Multiple Choice</div>
+        
+        <div class="question-card" data-q="1" data-type="mc" data-answer="B">
+            <div class="question-text">1. The main use of an infographic is to...</div>
+            <div class="options-group">
+                <label><input type="radio" name="q1" value="A"> A. Decorate a document</label>
+                <label><input type="radio" name="q1" value="B"> B. Show information or data with pictures so it is easy to understand</label>
+                <label><input type="radio" name="q1" value="C"> C. Replace all text with pictures</label>
+                <label><input type="radio" name="q1" value="D"> D. Save data</label>
+            </div>
+        </div>
+
+        <div class="question-card" data-q="2" data-type="mc" data-answer="C">
+            <div class="question-text">2. An infographic that shows events in order of time is called a...</div>
+            <div class="options-group">
+                <label><input type="radio" name="q2" value="A"> A. Statistic</label>
+                <label><input type="radio" name="q2" value="B"> B. Map</label>
+                <label><input type="radio" name="q2" value="C"> C. Timeline</label>
+                <label><input type="radio" name="q2" value="D"> D. Comparison</label>
+            </div>
+        </div>
+
+        <div class="question-card" data-q="3" data-type="mc" data-answer="B">
+            <div class="question-text">3. The first step before making an infographic is to...</div>
+            <div class="options-group">
+                <label><input type="radio" name="q3" value="A"> A. Choose colors</label>
+                <label><input type="radio" name="q3" value="B"> B. Decide the goal and the audience</label>
+                <label><input type="radio" name="q3" value="C"> C. Download icons</label>
+                <label><input type="radio" name="q3" value="D"> D. Export the file</label>
+            </div>
+        </div>
+
+        <div class="question-card" data-q="4" data-type="mc" data-answer="A">
+            <div class="question-text">4. Visual hierarchy helps to...</div>
+            <div class="options-group">
+                <label><input type="radio" name="q4" value="A"> A. Show the reading order clearly</label>
+                <label><input type="radio" name="q4" value="B"> B. Add more colors</label>
+                <label><input type="radio" name="q4" value="C"> C. Make the file smaller</label>
+                <label><input type="radio" name="q4" value="D"> D. Add animation</label>
+            </div>
+        </div>
+
+        <div class="question-card" data-q="5" data-type="mc" data-answer="C">
+            <div class="question-text">5. To make text easy to read, the text color and the background should have...</div>
+            <div class="options-group">
+                <label><input type="radio" name="q5" value="A"> A. The same color</label>
+                <label><input type="radio" name="q5" value="B"> B. A similar color</label>
+                <label><input type="radio" name="q5" value="C"> C. Strong contrast</label>
+                <label><input type="radio" name="q5" value="D"> D. Neon colors</label>
+            </div>
+        </div>
+
+        <div class="question-card" data-q="6" data-type="mc" data-answer="A">
+            <div class="question-text">6. The best chart to compare numbers between groups is a...</div>
+            <div class="options-group">
+                <label><input type="radio" name="q6" value="A"> A. Bar chart</label>
+                <label><input type="radio" name="q6" value="B"> B. Line chart</label>
+                <label><input type="radio" name="q6" value="C"> C. Map</label>
+                <label><input type="radio" name="q6" value="D"> D. Flow chart</label>
+            </div>
+        </div>
+
+        <div class="question-card" data-q="7" data-type="mc" data-answer="B">
+            <div class="question-text">7. The best chart to show change over time is a...</div>
+            <div class="options-group">
+                <label><input type="radio" name="q7" value="A"> A. Pie chart</label>
+                <label><input type="radio" name="q7" value="B"> B. Line chart</label>
+                <label><input type="radio" name="q7" value="C"> C. Table</label>
+                <label><input type="radio" name="q7" value="D"> D. Icon</label>
+            </div>
+        </div>
+
+        <div class="question-card" data-q="8" data-type="mc" data-answer="C">
+            <div class="question-text">8. White space is used to...</div>
+            <div class="options-group">
+                <label><input type="radio" name="q8" value="A"> A. Waste space</label>
+                <label><input type="radio" name="q8" value="B"> B. Put ads</label>
+                <label><input type="radio" name="q8" value="C"> C. Make the design look less crowded</label>
+                <label><input type="radio" name="q8" value="D"> D. Replace the title</label>
+            </div>
+        </div>
+
+        <div class="question-card" data-q="9" data-type="mc" data-answer="B">
+            <div class="question-text">9. We write the data source on an infographic to...</div>
+            <div class="options-group">
+                <label><input type="radio" name="q9" value="A"> A. Make the text longer</label>
+                <label><input type="radio" name="q9" value="B"> B. Show that the information is trusted</label>
+                <label><input type="radio" name="q9" value="C"> C. Use less empty space</label>
+                <label><input type="radio" name="q9" value="D"> D. Make the colors nicer</label>
+            </div>
+        </div>
+
+        <div class="question-card" data-q="10" data-type="mc" data-answer="C">
+            <div class="question-text">10. A good font choice for an infographic is...</div>
+            <div class="options-group">
+                <label><input type="radio" name="q10" value="A"> A. Many different fonts</label>
+                <label><input type="radio" name="q10" value="B"> B. Only fancy fonts</label>
+                <label><input type="radio" name="q10" value="C"> C. Easy-to-read fonts, with a bigger title than body text</label>
+                <label><input type="radio" name="q10" value="D"> D. The same size for all text</label>
+            </div>
+        </div>
+
+        <div class="question-card" data-q="11" data-type="mc" data-answer="A">
+            <div class="question-text">11. A sketch (wireframe) is used to...</div>
+            <div class="options-group">
+                <label><input type="radio" name="q11" value="A"> A. Plan the rough layout before the real design</label>
+                <label><input type="radio" name="q11" value="B"> B. Show the final result</label>
+                <label><input type="radio" name="q11" value="C"> C. Export the file</label>
+                <label><input type="radio" name="q11" value="D"> D. Choose the data source</label>
+            </div>
+        </div>
+
+        <div class="question-card" data-q="12" data-type="mc" data-answer="B">
+            <div class="question-text">12. A good file format to share on social media is...</div>
+            <div class="options-group">
+                <label><input type="radio" name="q12" value="A"> A. DOCX</label>
+                <label><input type="radio" name="q12" value="B"> B. PNG/JPG</label>
+                <label><input type="radio" name="q12" value="C"> C. XLSX</label>
+                <label><input type="radio" name="q12" value="D"> D. TXT</label>
+            </div>
+        </div>
+
+        <!-- BAGIAN B: Multiple Answers (13-17) -->
+        <div class="section-title">B. Multiple Answers (Pilih semua jawaban yang benar)</div>
+
+        <div class="question-card" data-q="13" data-type="ma" data-answer="Clear,Correct,Interesting">
+            <div class="question-text">13. Signs of a good infographic:</div>
+            <div class="options-group">
+                <label><input type="checkbox" name="q13" value="Clear"> Clear</label>
+                <label><input type="checkbox" name="q13" value="Correct"> Correct</label>
+                <label><input type="checkbox" name="q13" value="Very long text"> Very long text</label>
+                <label><input type="checkbox" name="q13" value="Interesting"> Interesting</label>
+                <label><input type="checkbox" name="q13" value="Uses 10 different colors"> Uses 10 different colors</label>
+            </div>
+        </div>
+
+        <div class="question-card" data-q="14" data-type="ma" data-answer="Title,Icons/charts,Data source,Conclusion">
+            <div class="question-text">14. Parts of an infographic:</div>
+            <div class="options-group">
+                <label><input type="checkbox" name="q14" value="Title"> Title</label>
+                <label><input type="checkbox" name="q14" value="Icons/charts"> Icons/charts</label>
+                <label><input type="checkbox" name="q14" value="Data source"> Data source</label>
+                <label><input type="checkbox" name="q14" value="Background music"> Background music</label>
+                <label><input type="checkbox" name="q14" value="Conclusion"> Conclusion</label>
+            </div>
+        </div>
+
+        <div class="question-card" data-q="15" data-type="ma" data-answer="Statistic,Timeline,Process">
+            <div class="question-text">15. Types of infographics:</div>
+            <div class="options-group">
+                <label><input type="checkbox" name="q15" value="Statistic"> Statistic</label>
+                <label><input type="checkbox" name="q15" value="Timeline"> Timeline</label>
+                <label><input type="checkbox" name="q15" value="Process"> Process</label>
+                <label><input type="checkbox" name="q15" value="Long story with no pictures"> Long story with no pictures</label>
+                <label><input type="checkbox" name="q15" value="Audio"> Audio</label>
+            </div>
+        </div>
+
+        <div class="question-card" data-q="16" data-type="ma" data-answer="Canva,PowerPoint,Word (SmartArt),Figma">
+            <div class="question-text">16. Tools to make an infographic:</div>
+            <div class="options-group">
+                <label><input type="checkbox" name="q16" value="Canva"> Canva</label>
+                <label><input type="checkbox" name="q16" value="PowerPoint"> PowerPoint</label>
+                <label><input type="checkbox" name="q16" value="Word (SmartArt)"> Word (SmartArt)</label>
+                <label><input type="checkbox" name="q16" value="Calculator"> Calculator</label>
+                <label><input type="checkbox" name="q16" value="Figma"> Figma</label>
+            </div>
+        </div>
+
+        <div class="question-card" data-q="17" data-type="ma" data-answer="Too many fonts,Colors that clash,No data source">
+            <div class="question-text">17. Design mistakes in an infographic:</div>
+            <div class="options-group">
+                <label><input type="checkbox" name="q17" value="Too many fonts"> Too many fonts</label>
+                <label><input type="checkbox" name="q17" value="Colors that clash"> Colors that clash</label>
+                <label><input type="checkbox" name="q17" value="No data source"> No data source</label>
+                <label><input type="checkbox" name="q17" value="Using white space"> Using white space</label>
+                <label><input type="checkbox" name="q17" value="Keeping text size the same"> Keeping text size the same</label>
+            </div>
+        </div>
+
+        <!-- BAGIAN C: True / False (18-25) -->
+        <div class="section-title">C. True / False</div>
+
+        <div class="question-card" data-q="18" data-type="tf" data-answer="False">
+            <div class="question-text">18. An infographic can only have pictures and no text.</div>
+            <select name="q18">
+                <option value="">-- Pilih --</option>
+                <option value="True">True</option>
+                <option value="False">False</option>
+            </select>
+        </div>
+
+        <div class="question-card" data-q="19" data-type="tf" data-answer="True">
+            <div class="question-text">19. Data in an infographic must be correct and trusted.</div>
+            <select name="q19">
+                <option value="">-- Pilih --</option>
+                <option value="True">True</option>
+                <option value="False">False</option>
+            </select>
+        </div>
+
+        <div class="question-card" data-q="20" data-type="tf" data-answer="False">
+            <div class="question-text">20. More colors make a better infographic.</div>
+            <select name="q20">
+                <option value="">-- Pilih --</option>
+                <option value="True">True</option>
+                <option value="False">False</option>
+            </select>
+        </div>
+
+        <div class="question-card" data-q="21" data-type="tf" data-answer="True">
+            <div class="question-text">21. A pie chart is good for showing parts of a whole (percentages).</div>
+            <select name="q21">
+                <option value="">-- Pilih --</option>
+                <option value="True">True</option>
+                <option value="False">False</option>
+            </select>
+        </div>
+
+        <div class="question-card" data-q="22" data-type="tf" data-answer="False">
+            <div class="question-text">22. We can use pictures and icons from the internet without thinking about copyright.</div>
+            <select name="q22">
+                <option value="">-- Pilih --</option>
+                <option value="True">True</option>
+                <option value="False">False</option>
+            </select>
+        </div>
+
+        <div class="question-card" data-q="23" data-type="tf" data-answer="True">
+            <div class="question-text">23. An infographic title should be short and clear.</div>
+            <select name="q23">
+                <option value="">-- Pilih --</option>
+                <option value="True">True</option>
+                <option value="False">False</option>
+            </select>
+        </div>
+
+        <div class="question-card" data-q="24" data-type="tf" data-answer="True">
+            <div class="question-text">24. A process infographic shows steps in order.</div>
+            <select name="q24">
+                <option value="">-- Pilih --</option>
+                <option value="True">True</option>
+                <option value="False">False</option>
+            </select>
+        </div>
+
+        <div class="question-card" data-q="25" data-type="tf" data-answer="False">
+            <div class="question-text">25. Visual hierarchy is not important in infographic design.</div>
+            <select name="q25">
+                <option value="">-- Pilih --</option>
+                <option value="True">True</option>
+                <option value="False">False</option>
+            </select>
+        </div>
+
+        <!-- BAGIAN D: Matching (26-29) -->
+        <div class="section-title">D. Matching (Ketik huruf pilihan yang sesuai, misal: B, C, D, A)</div>
+
+        <div class="question-card" data-q="26" data-type="matching" data-answer="1-B,2-C,3-D,4-A">
+            <div class="question-text">26. Match: 1. Timeline, 2. Process, 3. Comparison, 4. Geographic</div>
+            <div style="font-size: 13px; color: #555; margin-bottom: 8px;">A. Shows data by place | B. Order of time | C. Shows steps | D. Compares things<br>Format penulisan jawaban: 1-B, 2-C, 3-D, 4-A</div>
+            <input type="text" name="q26" placeholder="Contoh: 1-B, 2-C, 3-D, 4-A">
+        </div>
+
+        <div class="question-card" data-q="27" data-type="matching" data-answer="1-B,2-C,3-A,4-D">
+            <div class="question-text">27. Match: 1. Sales change each month, 2. Percent of users, 3. Number of students, 4. Boss & team structure</div>
+            <div style="font-size: 13px; color: #555; margin-bottom: 8px;">A. Bar chart | B. Line chart | C. Pie chart | D. Hierarchy chart<br>Format penulisan jawaban: 1-B, 2-C, 3-A, 4-D</div>
+            <input type="text" name="q27" placeholder="Contoh: 1-B, 2-C, 3-A, 4-D">
+        </div>
+
+        <div class="question-card" data-q="28" data-type="matching" data-answer="1-B,2-A,3-C,4-D">
+            <div class="question-text">28. Match: 1. Contrast, 2. White space, 3. Hierarchy, 4. Consistency</div>
+            <div style="font-size: 13px; color: #555; margin-bottom: 8px;">A. Empty space | B. Difference colors/sizes | C. Order of attention | D. Same style<br>Format penulisan jawaban: 1-B, 2-A, 3-C, 4-D</div>
+            <input type="text" name="q28" placeholder="Contoh: 1-B, 2-A, 3-C, 4-D">
+        </div>
+
+        <div class="question-card" data-q="29" data-type="matching" data-answer="1-B,2-A,3-C,4-D">
+            <div class="question-text">29. Match: 1. Planning, 2. Collecting data, 3. Design, 4. Checking</div>
+            <div style="font-size: 13px; color: #555; margin-bottom: 8px;">A. Finding numbers | B. Deciding goal/audience | C. Setting layout | D. Checking clear/correct<br>Format penulisan jawaban: 1-B, 2-A, 3-C, 4-D</div>
+            <input type="text" name="q29" placeholder="Contoh: 1-B, 2-A, 3-C, 4-D">
+        </div>
+
+        <!-- BAGIAN E: Short Answer (30-34) -->
+        <div class="section-title">E. Short Answer</div>
+
+        <div class="question-card" data-q="30" data-type="short" data-answer="icon">
+            <div class="question-text">30. A small picture or symbol that shows an idea is called an ______.</div>
+            <input type="text" name="q30" placeholder="Jawaban Anda">
+        </div>
+
+        <div class="question-card" data-q="31" data-type="short" data-answer="sketch / wireframe">
+            <div class="question-text">31. A rough plan of the layout before the final design is called a ______.</div>
+            <input type="text" name="q31" placeholder="Jawaban Anda">
+        </div>
+
+        <div class="question-card" data-q="32" data-type="short" data-answer="statistic">
+            <div class="question-text">32. An infographic with numbers and data is a ______ infographic.</div>
+            <input type="text" name="q32" placeholder="Jawaban Anda">
+        </div>
+
+        <div class="question-card" data-q="33" data-type="short" data-answer="SmartArt">
+            <div class="question-text">33. The feature in Microsoft Word to make a hierarchy chart is ______.</div>
+            <input type="text" name="q33" placeholder="Jawaban Anda">
+        </div>
+
+        <div class="question-card" data-q="34" data-type="short" data-answer="source">
+            <div class="question-text">34. The part that shows where the data comes from is called the ______.</div>
+            <input type="text" name="q34" placeholder="Jawaban Anda">
+        </div>
+
+        <!-- BAGIAN F: Ordering (35-37) -->
+        <div class="section-title">F. Ordering (Ketik urutan angka dengan tanda panah, misal: 2 → 4 → 5 → 1 → 3)</div>
+
+        <div class="question-card" data-q="35" data-type="order" data-answer="2 → 4 → 5 → 1 → 3">
+            <div class="question-text">35. Put steps: 1. Design layout, 2. Decide goal, 3. Check & export, 4. Collect data, 5. Make sketch</div>
+            <input type="text" name="q35" placeholder="Contoh: 2 → 4 → 5 → 1 → 3">
+        </div>
+
+        <div class="question-card" data-q="36" data-type="order" data-answer="3 → 1 → 2 → 4">
+            <div class="question-text">36. Put flow: 1. Main points, 2. Conclusion, 3. Title, 4. Data source</div>
+            <input type="text" name="q36" placeholder="Contoh: 3 → 1 → 2 → 4">
+        </div>
+
+        <div class="question-card" data-q="37" data-type="order" data-answer="4 → 2 → 1 → 3">
+            <div class="question-text">37. Put events (from first to last): 1. Canva design, 2. Data collected, 3. Published, 4. Topic chosen</div>
+            <input type="text" name="q37" placeholder="Contoh: 4 → 2 → 1 → 3">
+        </div>
+
+        <!-- BAGIAN G: Case Analysis (38-40) -->
+        <div class="section-title">G. Case Analysis</div>
+
+        <div class="question-card" data-q="38" data-type="mc" data-answer="B">
+            <div class="question-text">38. Rina’s infographic uses 6 fonts and 8 bright colors. Students find it hard to read. The best fix is to...</div>
+            <div class="options-group">
+                <label><input type="radio" name="q38" value="A"> A. Add more text</label>
+                <label><input type="radio" name="q38" value="B"> B. Use fewer fonts and colors, and keep them consistent</label>
+                <label><input type="radio" name="q38" value="C"> C. Make the letters smaller</label>
+                <label><input type="radio" name="q38" value="D"> D. Delete the title</label>
+            </div>
+        </div>
+
+        <div class="question-card" data-q="39" data-type="mc" data-answer="C">
+            <div class="question-text">39. Budi wants to show the steps of handling trash, from sorting to recycling. The best infographic type is...</div>
+            <div class="options-group">
+                <label><input type="radio" name="q39" value="A"> A. Statistic</label>
+                <label><input type="radio" name="q39" value="B"> B. Geographic</label>
+                <label><input type="radio" name="q39" value="C"> C. Process</label>
+                <label><input type="radio" name="q39" value="D"> D. Comparison</label>
+            </div>
+        </div>
+
+        <div class="question-card" data-q="40" data-type="mc" data-answer="B">
+            <div class="question-text">40. Dina made an infographic about the number of students in each class, but she did not write the data source. The main problem is...</div>
+            <div class="options-group">
+                <label><input type="radio" name="q40" value="A"> A. The colors are not interesting</label>
+                <label><input type="radio" name="q40" value="B"> B. It is not clear if the data can be trusted</label>
+                <label><input type="radio" name="q40" value="C"> C. The font is too big</label>
+                <label><input type="radio" name="q40" value="D"> D. There is too much empty space</label>
+            </div>
+        </div>
+
+        <button type="button" class="btn-submit" onclick="submitQuiz()">Kirim Jawaban</button>
+    </form>
+
+    <div id="result-container"></div>
+</div>
+
+<script>
+    // URL Web App Google Apps Script Anda (Ganti dengan URL deployment Apps Script Anda nanti)
+    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwLoClUyK_uDE7P5TOnf3PSL1HIV56nOY8oQSOtp4CdyeoZ1ptFGSWf0TUBlmXx5_8/exec";
+
+    function submitQuiz() {
+        const name = document.getElementById('studentName').value.trim();
+        const studentId = document.getElementById('studentId').value.trim();
+
+        if (!name || !studentId) {
+            alert("Harap isi Nama Lengkap dan Nomor Induk / Kelas terlebih dahulu!");
+            return;
+        }
+
+        let score = 0;
+        const totalQuestions = 40;
+        const answersDetail = {};
+
+        const cards = document.querySelectorAll('.question-card');
+        
+        cards.forEach(card => {
+            const qNum = card.getAttribute('data-q');
+            const qType = card.getAttribute('data-type');
+            const correctAnswer = card.getAttribute('data-answer').trim().toLowerCase();
+            
+            let userAnswer = "";
+
+            if (qType === 'mc' || qType === 'tf') {
+                if (qType === 'mc') {
+                    const checked = card.querySelector('input[type="radio"]:checked');
+                    userAnswer = checked ? checked.value.trim().toLowerCase() : "";
+                } else {
+                    const select = card.querySelector('select');
+                    userAnswer = select ? select.value.trim().toLowerCase() : "";
+                }
+            } else if (qType === 'ma') {
+                const checkedBoxes = card.querySelectorAll('input[type="checkbox"]:checked');
+                let values = Array.from(checkedBoxes).map(cb => cb.value.trim().toLowerCase());
+                values.sort();
+                userAnswer = values.join(',');
+            } else {
+                const input = card.querySelector('input[type="text"]');
+                userAnswer = input ? input.value.trim().toLowerCase().replace(/\s+/g, '') : "";
+            }
+
+            answersDetail[`q${qNum}`] = userAnswer;
+
+            // Penilaian otomatis sederhana
+            let cleanCorrect = correctAnswer.replace(/\s+/g, '');
+            if (qType === 'ma') {
+                cleanCorrect = correctAnswer.split(',').map(s => s.trim().toLowerCase()).sort().join(',');
+            }
+
+            if (userAnswer === cleanCorrect) {
+                score += 1;
+            }
+        });
+
+        const payload = {
+            name: name,
+            studentId: studentId,
+            score: score,
+            total: totalQuestions,
+            details: answersDetail,
+            timestamp: new Date().toISOString()
+        };
+
+        // Tampilkan loading / disable tombol
+        const submitBtn = document.querySelector('.btn-submit');
+        submitBtn.classList.add('loading');
+        submitBtn.innerText = "Mengirim data ke sistem...";
+
+        // Contoh pengiriman data ke Google Apps Script via Fetch POST
+        fetch(APPS_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors', // Diperlukan jika Apps Script di-deploy tanpa akses CORS terbuka penuh
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(payload)
+        })
+        .then(() => {
+            showResult(score, totalQuestions);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Tetap tampilkan hasil lokal jika koneksi gagal/terkendala CORS
+            showResult(score, totalQuestions);
+        });
+    }
+
+    function showResult(score, total) {
+        const form = document.getElementById('quizForm');
+        const infoDiv = document.querySelector('.student-info');
+        const resultContainer = document.getElementById('result-container');
+
+        form.style.display = 'none';
+        infoDiv.style.display = 'none';
+
+        resultContainer.style.display = 'block';
+        resultContainer.className = 'success-box';
+        resultContainer.innerHTML = `Terima kasih! Jawaban Anda telah direkam.<br>Skor Anda: <strong>${score} / ${total}</strong> (${((score/total)*100).toFixed(1)}%)`;
+        
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>
