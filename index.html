@@ -361,7 +361,7 @@
 
     <div class="student-info">
         <input type="text" id="studentName" placeholder="Full Name" required>
-        <input type="text" id="studentId" placeholder="Student ID / Class" required>
+        <input type="text" id="studentId" placeholder="Class" required>
     </div>
 
     <form id="quizForm">
@@ -836,7 +836,7 @@
         },
         submit: "Kirim Jawaban",
         loading: "Mengirim jawaban...",
-        missingDetails: "Harap isi Nama Lengkap dan Nomor Induk / Kelas terlebih dahulu!",
+        missingDetails: "Harap isi Nama Lengkap dan Kelas terlebih dahulu!",
         resultThankYou: "Terima kasih! Jawaban Anda telah direkam.",
         resultScore: "Skor Anda"
     };
@@ -951,7 +951,7 @@
         if (!name || !studentId) {
             alert(currentLanguage === 'id'
                 ? INDONESIAN.missingDetails
-                : "Please enter your full name and student ID / class first!");
+                : "Please enter your full name and class first!");
             return;
         }
 
