@@ -70,6 +70,57 @@
             text-align: center;
         }
 
+        .language-toggle {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            width: 116px;
+            margin: -26px auto 28px;
+            padding: 4px;
+            overflow: hidden;
+            border: 1px solid #e6e7f2;
+            border-radius: 999px;
+            background: #fff;
+            box-shadow: 0 4px 12px rgb(34 39 75 / 0.12);
+            color: #777d91;
+            cursor: pointer;
+            font: inherit;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+
+        .language-toggle span:not(.language-toggle-thumb) {
+            position: relative;
+            z-index: 1;
+            padding: 6px 0;
+            text-align: center;
+            transition: color 180ms ease;
+        }
+
+        .language-toggle[aria-pressed="false"] span:nth-child(2),
+        .language-toggle[aria-pressed="true"] span:nth-child(1) {
+            color: #fff;
+        }
+
+        .language-toggle-thumb {
+            position: absolute;
+            inset: 4px auto 4px 4px;
+            width: calc(50% - 4px);
+            border-radius: 999px;
+            background: linear-gradient(110deg, #5658dc, #7772ed);
+            transition: transform 200ms ease;
+        }
+
+        .language-toggle[aria-pressed="true"] .language-toggle-thumb {
+            transform: translateX(52px);
+        }
+
+        .language-toggle:focus-visible {
+            outline: 3px solid rgb(91 92 226 / 0.35);
+            outline-offset: 3px;
+        }
+
         .student-info {
             display: flex;
             flex-wrap: wrap;
@@ -129,6 +180,10 @@
             font-size: 1rem;
             font-weight: 650;
             line-height: 1.55;
+        }
+
+        .question-hint {
+            white-space: pre-line;
         }
 
         .options-group label {
@@ -259,6 +314,10 @@
                 font-size: 0.9rem;
             }
 
+            .language-toggle {
+                margin-bottom: 22px;
+            }
+
             .student-info {
                 gap: 9px;
                 padding: 13px;
@@ -293,11 +352,16 @@
 
 <div class="container">
     <h1>Infographic Practice Questions</h1>
-    <p class="subtitle">Silakan isi identitas dan jawab seluruh pertanyaan di bawah ini dengan teliti.</p>
+    <p class="subtitle">Enter your details and answer all questions carefully.</p>
+    <button class="language-toggle" id="languageToggle" type="button" aria-label="Switch to Bahasa Indonesia" aria-pressed="false">
+        <span>EN</span>
+        <span>ID</span>
+        <span class="language-toggle-thumb" aria-hidden="true"></span>
+    </button>
 
     <div class="student-info">
-        <input type="text" id="studentName" placeholder="Nama Lengkap" required>
-        <input type="text" id="studentId" placeholder="Nomor Induk / Kelas" required>
+        <input type="text" id="studentName" placeholder="Full Name" required>
+        <input type="text" id="studentId" placeholder="Student ID / Class" required>
     </div>
 
     <form id="quizForm">
@@ -426,7 +490,7 @@
         </div>
 
         <!-- BAGIAN B: Multiple Answers (13-17) -->
-        <div class="section-title">B. Multiple Answers (Pilih semua jawaban yang benar)</div>
+        <div class="section-title">B. Multiple Answers (Select all correct answers)</div>
 
         <div class="question-card" data-q="13" data-type="ma" data-answer="Clear,Correct,Interesting">
             <div class="question-text">13. Signs of a good infographic:</div>
@@ -489,7 +553,7 @@
         <div class="question-card" data-q="18" data-type="tf" data-answer="False">
             <div class="question-text">18. An infographic can only have pictures and no text.</div>
             <select name="q18">
-                <option value="">-- Pilih --</option>
+                <option value="">-- Select --</option>
                 <option value="True">True</option>
                 <option value="False">False</option>
             </select>
@@ -498,7 +562,7 @@
         <div class="question-card" data-q="19" data-type="tf" data-answer="True">
             <div class="question-text">19. Data in an infographic must be correct and trusted.</div>
             <select name="q19">
-                <option value="">-- Pilih --</option>
+                <option value="">-- Select --</option>
                 <option value="True">True</option>
                 <option value="False">False</option>
             </select>
@@ -507,7 +571,7 @@
         <div class="question-card" data-q="20" data-type="tf" data-answer="False">
             <div class="question-text">20. More colors make a better infographic.</div>
             <select name="q20">
-                <option value="">-- Pilih --</option>
+                <option value="">-- Select --</option>
                 <option value="True">True</option>
                 <option value="False">False</option>
             </select>
@@ -516,7 +580,7 @@
         <div class="question-card" data-q="21" data-type="tf" data-answer="True">
             <div class="question-text">21. A pie chart is good for showing parts of a whole (percentages).</div>
             <select name="q21">
-                <option value="">-- Pilih --</option>
+                <option value="">-- Select --</option>
                 <option value="True">True</option>
                 <option value="False">False</option>
             </select>
@@ -525,7 +589,7 @@
         <div class="question-card" data-q="22" data-type="tf" data-answer="False">
             <div class="question-text">22. We can use pictures and icons from the internet without thinking about copyright.</div>
             <select name="q22">
-                <option value="">-- Pilih --</option>
+                <option value="">-- Select --</option>
                 <option value="True">True</option>
                 <option value="False">False</option>
             </select>
@@ -534,7 +598,7 @@
         <div class="question-card" data-q="23" data-type="tf" data-answer="True">
             <div class="question-text">23. An infographic title should be short and clear.</div>
             <select name="q23">
-                <option value="">-- Pilih --</option>
+                <option value="">-- Select --</option>
                 <option value="True">True</option>
                 <option value="False">False</option>
             </select>
@@ -543,7 +607,7 @@
         <div class="question-card" data-q="24" data-type="tf" data-answer="True">
             <div class="question-text">24. A process infographic shows steps in order.</div>
             <select name="q24">
-                <option value="">-- Pilih --</option>
+                <option value="">-- Select --</option>
                 <option value="True">True</option>
                 <option value="False">False</option>
             </select>
@@ -552,37 +616,37 @@
         <div class="question-card" data-q="25" data-type="tf" data-answer="False">
             <div class="question-text">25. Visual hierarchy is not important in infographic design.</div>
             <select name="q25">
-                <option value="">-- Pilih --</option>
+                <option value="">-- Select --</option>
                 <option value="True">True</option>
                 <option value="False">False</option>
             </select>
         </div>
 
         <!-- BAGIAN D: Matching (26-29) -->
-        <div class="section-title">D. Matching (Ketik huruf pilihan yang sesuai, misal: B, C, D, A)</div>
+        <div class="section-title">D. Matching (Type the matching letters, e.g. B, C, D, A)</div>
 
         <div class="question-card" data-q="26" data-type="matching" data-answer="1-B,2-C,3-D,4-A">
             <div class="question-text">26. Match: 1. Timeline, 2. Process, 3. Comparison, 4. Geographic</div>
-            <div style="font-size: 13px; color: #555; margin-bottom: 8px;">A. Shows data by place | B. Order of time | C. Shows steps | D. Compares things<br>Format penulisan jawaban: 1-B, 2-C, 3-D, 4-A</div>
-            <input type="text" name="q26" placeholder="Contoh: 1-B, 2-C, 3-D, 4-A">
+            <div class="question-hint" style="font-size: 13px; color: #555; margin-bottom: 8px;">A. Shows data by place | B. Order of time | C. Shows steps | D. Compares things<br>Answer format: 1-B, 2-C, 3-D, 4-A</div>
+            <input type="text" name="q26" placeholder="Example: 1-B, 2-C, 3-D, 4-A">
         </div>
 
         <div class="question-card" data-q="27" data-type="matching" data-answer="1-B,2-C,3-A,4-D">
             <div class="question-text">27. Match: 1. Sales change each month, 2. Percent of users, 3. Number of students, 4. Boss & team structure</div>
-            <div style="font-size: 13px; color: #555; margin-bottom: 8px;">A. Bar chart | B. Line chart | C. Pie chart | D. Hierarchy chart<br>Format penulisan jawaban: 1-B, 2-C, 3-A, 4-D</div>
-            <input type="text" name="q27" placeholder="Contoh: 1-B, 2-C, 3-A, 4-D">
+            <div class="question-hint" style="font-size: 13px; color: #555; margin-bottom: 8px;">A. Bar chart | B. Line chart | C. Pie chart | D. Hierarchy chart<br>Answer format: 1-B, 2-C, 3-A, 4-D</div>
+            <input type="text" name="q27" placeholder="Example: 1-B, 2-C, 3-A, 4-D">
         </div>
 
         <div class="question-card" data-q="28" data-type="matching" data-answer="1-B,2-A,3-C,4-D">
             <div class="question-text">28. Match: 1. Contrast, 2. White space, 3. Hierarchy, 4. Consistency</div>
-            <div style="font-size: 13px; color: #555; margin-bottom: 8px;">A. Empty space | B. Difference colors/sizes | C. Order of attention | D. Same style<br>Format penulisan jawaban: 1-B, 2-A, 3-C, 4-D</div>
-            <input type="text" name="q28" placeholder="Contoh: 1-B, 2-A, 3-C, 4-D">
+            <div class="question-hint" style="font-size: 13px; color: #555; margin-bottom: 8px;">A. Empty space | B. Difference in colors/sizes | C. Order of attention | D. Same style<br>Answer format: 1-B, 2-A, 3-C, 4-D</div>
+            <input type="text" name="q28" placeholder="Example: 1-B, 2-A, 3-C, 4-D">
         </div>
 
         <div class="question-card" data-q="29" data-type="matching" data-answer="1-B,2-A,3-C,4-D">
             <div class="question-text">29. Match: 1. Planning, 2. Collecting data, 3. Design, 4. Checking</div>
-            <div style="font-size: 13px; color: #555; margin-bottom: 8px;">A. Finding numbers | B. Deciding goal/audience | C. Setting layout | D. Checking clear/correct<br>Format penulisan jawaban: 1-B, 2-A, 3-C, 4-D</div>
-            <input type="text" name="q29" placeholder="Contoh: 1-B, 2-A, 3-C, 4-D">
+            <div class="question-hint" style="font-size: 13px; color: #555; margin-bottom: 8px;">A. Finding numbers | B. Deciding goal/audience | C. Setting layout | D. Checking clarity/accuracy<br>Answer format: 1-B, 2-A, 3-C, 4-D</div>
+            <input type="text" name="q29" placeholder="Example: 1-B, 2-A, 3-C, 4-D">
         </div>
 
         <!-- BAGIAN E: Multiple Choice (30-34) -->
@@ -639,21 +703,21 @@
         </div>
 
         <!-- BAGIAN F: Ordering (35-37) -->
-        <div class="section-title">F. Ordering (Ketik urutan angka dengan tanda panah, misal: 2 → 4 → 5 → 1 → 3)</div>
+        <div class="section-title">F. Ordering (Enter the number sequence with arrows, e.g. 2 → 4 → 5 → 1 → 3)</div>
 
         <div class="question-card" data-q="35" data-type="order" data-answer="2 → 4 → 5 → 1 → 3">
             <div class="question-text">35. Put steps: 1. Design layout, 2. Decide goal, 3. Check & export, 4. Collect data, 5. Make sketch</div>
-            <input type="text" name="q35" placeholder="Contoh: 2 → 4 → 5 → 1 → 3">
+            <input type="text" name="q35" placeholder="Example: 2 → 4 → 5 → 1 → 3">
         </div>
 
         <div class="question-card" data-q="36" data-type="order" data-answer="3 → 1 → 2 → 4">
             <div class="question-text">36. Put flow: 1. Main points, 2. Conclusion, 3. Title, 4. Data source</div>
-            <input type="text" name="q36" placeholder="Contoh: 3 → 1 → 2 → 4">
+            <input type="text" name="q36" placeholder="Example: 3 → 1 → 2 → 4">
         </div>
 
         <div class="question-card" data-q="37" data-type="order" data-answer="4 → 2 → 1 → 3">
             <div class="question-text">37. Put events (from first to last): 1. Canva design, 2. Data collected, 3. Published, 4. Topic chosen</div>
-            <input type="text" name="q37" placeholder="Contoh: 4 → 2 → 1 → 3">
+            <input type="text" name="q37" placeholder="Example: 4 → 2 → 1 → 3">
         </div>
 
         <!-- BAGIAN G: Case Analysis (38-40) -->
@@ -689,7 +753,7 @@
             </div>
         </div>
 
-        <button type="button" class="btn-submit" onclick="submitQuiz()">Kirim Jawaban</button>
+        <button type="button" class="btn-submit" onclick="submitQuiz()">Submit Answers</button>
     </form>
 
     <div id="result-container"></div>
@@ -699,12 +763,195 @@
     // URL Web App Google Apps Script Anda (Ganti dengan URL deployment Apps Script Anda nanti)
     const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwLoClUyK_uDE7P5TOnf3PSL1HIV56nOY8oQSOtp4CdyeoZ1ptFGSWf0TUBlmXx5_8/exec";
 
+    const INDONESIAN = {
+        title: "Latihan Soal Infografik",
+        subtitle: "Isi identitas dan jawab semua pertanyaan dengan teliti.",
+        namePlaceholder: "Nama Lengkap",
+        studentIdPlaceholder: "Nomor Induk / Kelas",
+        sections: [
+            "A. Pilihan Ganda",
+            "B. Pilihan Ganda (Pilih semua jawaban yang benar)",
+            "C. Benar / Salah",
+            "D. Mencocokkan (Ketik huruf yang sesuai, contoh: B, C, D, A)",
+            "E. Pilihan Ganda",
+            "F. Mengurutkan (Ketik urutan angka dengan tanda panah, contoh: 2 → 4 → 5 → 1 → 3)",
+            "G. Analisis Kasus"
+        ],
+        questions: {
+            1: { text: "1. Apa kegunaan utama infografik?", choices: ["A. Menghias dokumen", "B. Menyajikan informasi atau data dengan gambar agar mudah dipahami", "C. Mengganti semua teks dengan gambar", "D. Menyimpan data"] },
+            2: { text: "2. Infografik yang menampilkan peristiwa berdasarkan urutan waktu disebut...", choices: ["A. Statistik", "B. Peta", "C. Linimasa", "D. Perbandingan"] },
+            3: { text: "3. Langkah pertama sebelum membuat infografik adalah...", choices: ["A. Memilih warna", "B. Menentukan tujuan dan audiens", "C. Mengunduh ikon", "D. Mengekspor file"] },
+            4: { text: "4. Hierarki visual membantu untuk...", choices: ["A. Menunjukkan urutan membaca dengan jelas", "B. Menambahkan lebih banyak warna", "C. Memperkecil ukuran file", "D. Menambahkan animasi"] },
+            5: { text: "5. Agar teks mudah dibaca, warna teks dan latar belakang harus memiliki...", choices: ["A. Warna yang sama", "B. Warna yang mirip", "C. Kontras yang kuat", "D. Warna neon"] },
+            6: { text: "6. Grafik terbaik untuk membandingkan angka antarkelompok adalah...", choices: ["A. Diagram batang", "B. Diagram garis", "C. Peta", "D. Diagram alur"] },
+            7: { text: "7. Grafik terbaik untuk menunjukkan perubahan dari waktu ke waktu adalah...", choices: ["A. Diagram lingkaran", "B. Diagram garis", "C. Tabel", "D. Ikon"] },
+            8: { text: "8. Ruang kosong digunakan untuk...", choices: ["A. Membuang tempat", "B. Menaruh iklan", "C. Membuat desain tidak terlihat sesak", "D. Menggantikan judul"] },
+            9: { text: "9. Sumber data dicantumkan pada infografik untuk...", choices: ["A. Memperpanjang teks", "B. Menunjukkan bahwa informasi dapat dipercaya", "C. Mengurangi ruang kosong", "D. Membuat warna lebih menarik"] },
+            10: { text: "10. Pilihan font yang baik untuk infografik adalah...", choices: ["A. Menggunakan banyak jenis font", "B. Hanya menggunakan font dekoratif", "C. Menggunakan font yang mudah dibaca dan judul lebih besar daripada isi", "D. Menggunakan ukuran yang sama untuk semua teks"] },
+            11: { text: "11. Sketsa (wireframe) digunakan untuk...", choices: ["A. Merencanakan tata letak kasar sebelum membuat desain akhir", "B. Menampilkan hasil akhir", "C. Mengekspor file", "D. Memilih sumber data"] },
+            12: { text: "12. Format file yang baik untuk dibagikan di media sosial adalah...", choices: ["A. DOCX", "B. PNG/JPG", "C. XLSX", "D. TXT"] },
+            13: { text: "13. Ciri-ciri infografik yang baik:", choices: ["Jelas", "Akurat", "Teks sangat panjang", "Menarik", "Menggunakan 10 warna berbeda"] },
+            14: { text: "14. Bagian-bagian dari infografik:", choices: ["Judul", "Ikon/grafik", "Sumber data", "Musik latar", "Kesimpulan"] },
+            15: { text: "15. Jenis-jenis infografik:", choices: ["Statistik", "Linimasa", "Proses", "Cerita panjang tanpa gambar", "Audio"] },
+            16: { text: "16. Alat untuk membuat infografik:", choices: ["Canva", "PowerPoint", "Word (SmartArt)", "Kalkulator", "Figma"] },
+            17: { text: "17. Kesalahan desain dalam infografik:", choices: ["Terlalu banyak jenis font", "Warna yang bertabrakan", "Tidak mencantumkan sumber data", "Menggunakan ruang kosong", "Ukuran teks dibuat sama semua"] },
+            18: { text: "18. Infografik hanya boleh berisi gambar tanpa teks." },
+            19: { text: "19. Data dalam infografik harus akurat dan tepercaya." },
+            20: { text: "20. Semakin banyak warna, semakin baik infografiknya." },
+            21: { text: "21. Diagram lingkaran cocok untuk menunjukkan bagian dari keseluruhan (persentase)." },
+            22: { text: "22. Kita boleh menggunakan gambar dan ikon dari internet tanpa memikirkan hak cipta." },
+            23: { text: "23. Judul infografik sebaiknya singkat dan jelas." },
+            24: { text: "24. Infografik proses menunjukkan langkah-langkah secara berurutan." },
+            25: { text: "25. Hierarki visual tidak penting dalam desain infografik." },
+            26: { text: "26. Cocokkan: 1. Linimasa, 2. Proses, 3. Perbandingan, 4. Geografis" },
+            27: { text: "27. Cocokkan: 1. Perubahan penjualan tiap bulan, 2. Persentase pengguna, 3. Jumlah siswa, 4. Struktur atasan dan tim" },
+            28: { text: "28. Cocokkan: 1. Kontras, 2. Ruang kosong, 3. Hierarki, 4. Konsistensi" },
+            29: { text: "29. Cocokkan: 1. Perencanaan, 2. Mengumpulkan data, 3. Mendesain, 4. Memeriksa" },
+            30: { text: "30. Elemen apa yang membantu pembaca melihat informasi terpenting terlebih dahulu?", choices: ["A. Tekstur latar belakang", "B. Hierarki visual", "C. Bingkai dekoratif", "D. Paragraf tambahan"] },
+            31: { text: "31. Mengapa gaya ikon dalam infografik sebaiknya konsisten?", choices: ["A. Agar setiap ikon terlihat berbeda", "B. Untuk menggantikan kebutuhan akan data", "C. Agar desain terasa selaras dan lebih mudah diikuti", "D. Untuk menambahkan lebih banyak warna"] },
+            32: { text: "32. Apa yang membantu pembaca memahami grafik dengan tepat?", choices: ["A. Label yang jelas dan skala yang sesuai", "B. Menghapus semua angka", "C. Menggunakan skala berbeda untuk setiap batang", "D. Menambahkan ilustrasi yang tidak berkaitan"] },
+            33: { text: "33. Sebuah desain terlihat terlalu sesak. Apa langkah pertama yang terbaik?", choices: ["A. Menambahkan lebih banyak teks di area kosong", "B. Membuat semua elemen berukuran sama", "C. Menambahkan lebih banyak bentuk dekoratif", "D. Menghapus detail yang tidak mendukung pesan utama"] },
+            34: { text: "34. Apa yang sebaiknya dilakukan sebelum menggunakan gambar karya orang lain?", choices: ["A. Menghapus nama pembuatnya", "B. Memeriksa lisensi penggunaan dan mencantumkan kredit jika diwajibkan", "C. Mengubah warnanya dan menganggapnya bebas digunakan", "D. Menggunakannya tanpa memeriksa izin"] },
+            35: { text: "35. Urutkan langkah: 1. Merancang tata letak, 2. Menentukan tujuan, 3. Memeriksa & mengekspor, 4. Mengumpulkan data, 5. Membuat sketsa" },
+            36: { text: "36. Urutkan alur: 1. Poin utama, 2. Kesimpulan, 3. Judul, 4. Sumber data" },
+            37: { text: "37. Urutkan peristiwa dari awal hingga akhir: 1. Mendesain di Canva, 2. Mengumpulkan data, 3. Mempublikasikan, 4. Memilih topik" },
+            38: { text: "38. Infografik Rina menggunakan 6 jenis font dan 8 warna cerah. Siswa kesulitan membacanya. Perbaikan terbaik adalah...", choices: ["A. Menambahkan lebih banyak teks", "B. Mengurangi jenis font dan warna, serta menggunakannya secara konsisten", "C. Memperkecil ukuran huruf", "D. Menghapus judul"] },
+            39: { text: "39. Budi ingin menunjukkan langkah-langkah mengolah sampah, dari memilah hingga mendaur ulang. Jenis infografik yang paling tepat adalah...", choices: ["A. Statistik", "B. Geografis", "C. Proses", "D. Perbandingan"] },
+            40: { text: "40. Dina membuat infografik tentang jumlah siswa di setiap kelas, tetapi tidak mencantumkan sumber data. Masalah utamanya adalah...", choices: ["A. Warnanya kurang menarik", "B. Data tersebut tidak jelas dapat dipercaya atau tidak", "C. Ukuran font terlalu besar", "D. Terlalu banyak ruang kosong"] }
+        },
+        hints: {
+            26: "A. Menampilkan data berdasarkan tempat | B. Urutan waktu | C. Menampilkan langkah-langkah | D. Membandingkan sesuatu\nFormat jawaban: 1-B, 2-C, 3-D, 4-A",
+            27: "A. Diagram batang | B. Diagram garis | C. Diagram lingkaran | D. Diagram hierarki\nFormat jawaban: 1-B, 2-C, 3-A, 4-D",
+            28: "A. Ruang kosong | B. Perbedaan warna/ukuran | C. Urutan perhatian | D. Gaya yang sama\nFormat jawaban: 1-B, 2-A, 3-C, 4-D",
+            29: "A. Mencari angka | B. Menentukan tujuan/audiens | C. Mengatur tata letak | D. Memeriksa kejelasan/akurasi\nFormat jawaban: 1-B, 2-A, 3-C, 4-D"
+        },
+        placeholders: {
+            26: "Contoh: 1-B, 2-C, 3-D, 4-A",
+            27: "Contoh: 1-B, 2-C, 3-A, 4-D",
+            28: "Contoh: 1-B, 2-A, 3-C, 4-D",
+            29: "Contoh: 1-B, 2-A, 3-C, 4-D",
+            35: "Contoh: 2 → 4 → 5 → 1 → 3",
+            36: "Contoh: 3 → 1 → 2 → 4",
+            37: "Contoh: 4 → 2 → 1 → 3"
+        },
+        submit: "Kirim Jawaban",
+        loading: "Mengirim jawaban...",
+        missingDetails: "Harap isi Nama Lengkap dan Nomor Induk / Kelas terlebih dahulu!",
+        resultThankYou: "Terima kasih! Jawaban Anda telah direkam.",
+        resultScore: "Skor Anda"
+    };
+
+    const defaultContent = {
+        title: document.querySelector('h1').textContent,
+        subtitle: document.querySelector('.subtitle').textContent,
+        namePlaceholder: document.getElementById('studentName').placeholder,
+        studentIdPlaceholder: document.getElementById('studentId').placeholder,
+        sections: Array.from(document.querySelectorAll('.section-title'), section => section.textContent),
+        submit: document.querySelector('.btn-submit').textContent,
+        cards: {}
+    };
+
+    document.querySelectorAll('.question-card').forEach(card => {
+        const qNum = card.dataset.q;
+        const hint = card.querySelector('.question-hint');
+        const textInput = card.querySelector('input[type="text"]');
+        const select = card.querySelector('select');
+        defaultContent.cards[qNum] = {
+            text: card.querySelector('.question-text').textContent,
+            choices: Array.from(card.querySelectorAll('.options-group label'), label => label.lastChild.textContent.trim()),
+            hint: hint ? hint.innerHTML : null,
+            placeholder: textInput ? textInput.placeholder : null,
+            selectOptions: select ? Array.from(select.options, option => option.textContent) : null
+        };
+    });
+
+    let currentLanguage = 'en';
+    let latestResult = null;
+
+    function renderResult() {
+        const resultContainer = document.getElementById('result-container');
+        const thankYou = currentLanguage === 'id' ? INDONESIAN.resultThankYou : 'Thank you! Your answers have been recorded.';
+        const scoreLabel = currentLanguage === 'id' ? INDONESIAN.resultScore : 'Your score';
+        resultContainer.innerHTML = `${thankYou}<br>${scoreLabel}: <strong>${latestResult.score} / ${latestResult.total}</strong> (${((latestResult.score / latestResult.total) * 100).toFixed(1)}%)`;
+    }
+
+    function setLanguage(language) {
+        currentLanguage = language;
+        const isIndonesian = language === 'id';
+        const content = isIndonesian ? INDONESIAN : defaultContent;
+        document.documentElement.lang = isIndonesian ? 'id' : 'en';
+        document.title = isIndonesian ? INDONESIAN.title : 'Infographic Practice Questions';
+        document.querySelector('h1').textContent = content.title;
+        document.querySelector('.subtitle').textContent = content.subtitle;
+        document.getElementById('studentName').placeholder = content.namePlaceholder;
+        document.getElementById('studentId').placeholder = content.studentIdPlaceholder;
+        document.querySelectorAll('.section-title').forEach((section, index) => {
+            section.textContent = content.sections[index];
+        });
+
+        document.querySelectorAll('.question-card').forEach(card => {
+            const qNum = card.dataset.q;
+            const translated = isIndonesian ? INDONESIAN.questions[qNum] : null;
+            const original = defaultContent.cards[qNum];
+            card.querySelector('.question-text').textContent = translated ? translated.text : original.text;
+
+            const labels = card.querySelectorAll('.options-group label');
+            const choices = translated && translated.choices ? translated.choices : original.choices;
+            labels.forEach((label, index) => {
+                label.lastChild.textContent = ` ${choices[index]}`;
+            });
+
+            const hint = card.querySelector('.question-hint');
+            if (hint) {
+                if (isIndonesian && INDONESIAN.hints[qNum]) {
+                    hint.textContent = INDONESIAN.hints[qNum];
+                } else {
+                    hint.innerHTML = original.hint;
+                }
+            }
+
+            const textInput = card.querySelector('input[type="text"]');
+            if (textInput) {
+                textInput.placeholder = isIndonesian && INDONESIAN.placeholders[qNum]
+                    ? INDONESIAN.placeholders[qNum]
+                    : original.placeholder;
+            }
+
+            const select = card.querySelector('select');
+            if (select) {
+                Array.from(select.options).forEach((option, index) => {
+                    option.textContent = isIndonesian
+                        ? ["-- Pilih --", "Benar", "Salah"][index]
+                        : original.selectOptions[index];
+                });
+            }
+        });
+
+        const submitButton = document.querySelector('.btn-submit');
+        submitButton.textContent = content.submit;
+        const languageToggle = document.getElementById('languageToggle');
+        languageToggle.setAttribute('aria-pressed', String(isIndonesian));
+        languageToggle.setAttribute('aria-label', isIndonesian ? 'Beralih ke bahasa Inggris' : 'Switch to Bahasa Indonesia');
+
+        if (latestResult) {
+            renderResult();
+        }
+    }
+
+    document.getElementById('languageToggle').addEventListener('click', () => {
+        setLanguage(currentLanguage === 'en' ? 'id' : 'en');
+    });
+
+    setLanguage('en');
+
     function submitQuiz() {
         const name = document.getElementById('studentName').value.trim();
         const studentId = document.getElementById('studentId').value.trim();
 
         if (!name || !studentId) {
-            alert("Harap isi Nama Lengkap dan Nomor Induk / Kelas terlebih dahulu!");
+            alert(currentLanguage === 'id'
+                ? INDONESIAN.missingDetails
+                : "Please enter your full name and student ID / class first!");
             return;
         }
 
@@ -764,7 +1011,9 @@
         // Tampilkan loading / disable tombol
         const submitBtn = document.querySelector('.btn-submit');
         submitBtn.classList.add('loading');
-        submitBtn.innerText = "Mengirim data ke sistem...";
+        submitBtn.innerText = currentLanguage === 'id'
+            ? INDONESIAN.loading
+            : "Sending your answers...";
 
         // Contoh pengiriman data ke Google Apps Script via Fetch POST
         fetch(APPS_SCRIPT_URL, {
@@ -790,12 +1039,13 @@
         const infoDiv = document.querySelector('.student-info');
         const resultContainer = document.getElementById('result-container');
 
+        latestResult = { score, total };
         form.style.display = 'none';
         infoDiv.style.display = 'none';
 
         resultContainer.style.display = 'block';
         resultContainer.className = 'success-box';
-        resultContainer.innerHTML = `Terima kasih! Jawaban Anda telah direkam.<br>Skor Anda: <strong>${score} / ${total}</strong> (${((score/total)*100).toFixed(1)}%)`;
+        renderResult();
         
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
